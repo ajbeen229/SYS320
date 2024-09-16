@@ -35,7 +35,3 @@ Where-Object {$_.IP -like "10.*"} |`
 Group IP |`
 Select-Object Count, Name
 #>
-
-#9
-. (Join-Path $PSScriptRoot ApacheLogs.ps1)
-getIPs "index.html" " 404 " "Chrome"

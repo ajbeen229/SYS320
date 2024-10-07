@@ -4,7 +4,7 @@
 #Get-Content .\access.log
 
 #3
-#Get-Content .\access.log -Tail 5
+Get-Content C:\xampp\apache\logs\access.log -Tail 5
 
 #4
 #Get-Content .\access.log | Select-String ' 404 ', ' 400 '

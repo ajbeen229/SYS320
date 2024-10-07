@@ -16,8 +16,13 @@ $Services = Get-Service |`
 #>
 
 #4
-if( (Get-Process | Where-Object {$_.Name -eq "chrome"}).Count -eq 0 ) {
-    Start-Process chrome.exe '--new-window champlain.edu'
-} else {
-    Stop-Process -Name chrome
+function openChrome() {
+    if( (Get-Process | Where-Object {$_.Name -eq "chrome"}).Count -eq 0 ) {
+        Start-Process chrome.exe '--new-window champlain.edu'
+    } 
+    else {
+        Stop-Process -Name chrome
+    }
 }
+
+#openChrome

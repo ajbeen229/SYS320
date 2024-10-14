@@ -79,11 +79,14 @@ function checkUser($username) {
 
 }
 
-function getAtRiskUsers() {
+function getAtRiskUsers($days=0) {
 
-    $days = Read-Host "`nPlease enter number of days to check"
+    . "C:\Users\champuser\Documents\SYS320\Week6_Scripts\Event-Logs.ps1"
+
+    if($days -eq 0) { $days = Read-Host "`nPlease enter number of days to check" }
     $logs = getFailedLogins $days | Group-Object User | Select Count, Name
         
-    Write-Host "`nList of at-risk users:`n" ($logs | Where {$_.Count -gt 10}).Name
+    #Write-Host "`nList of at-risk users:`n" ($logs | Where {$_.Count -gt 10}).Name
+    return $logs
 
 }

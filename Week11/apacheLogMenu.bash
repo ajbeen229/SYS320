@@ -51,7 +51,7 @@ function frequentVisitors() {
 	echo "$input" | while read -r line
 	do
 		visits=$(echo "$line" | cut -d ' ' -f 1)
-		if [[ "${visits}" -gt 10 ]]; then
+		if [[ "$visits" -gt 10 ]]; then
 			echo "$line"
 		fi
 	done
@@ -66,7 +66,7 @@ function frequentVisitors() {
 function suspiciousVisitors() {
 
 	ioc=$(cat "$logFile" | egrep -i -f "./ioc.txt")
-	echo "$ioc" | awk '{print $1}' | uniq
+	echo "$ioc" | awk '{print $1}' | uniq -c
 
 }
 
@@ -120,8 +120,8 @@ do
 		suspiciousVisitors
 
 	# Display a message, if an invalid input is given
-	#else
-	#	echo "Invalid input"
+	else
+		echo "Invalid input"
 	fi
 	read input
 done
